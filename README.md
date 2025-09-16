@@ -8,6 +8,6 @@ Descripcion:
 Centro de atencion ficticio para gatos con peluqueros y otros servicios incluidos
 (De momento solo peluqueria)
 
-DER:
+![DER](diagramas/DER.png)
 
-
+![MER](diagramas/MER.png)
