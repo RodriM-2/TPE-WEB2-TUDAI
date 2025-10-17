@@ -1,0 +1,24 @@
+.Datos {
+    width: 100%;
+    border-collapse: separate;
+}
+
+.Datos tr td, th{
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.Botones {
+    text-decoration: none;
+    font-weight: bolder;
+    margin: 5px;
+    color:black;
+}
+
+.Botones:hover {
+    color: gray;
+}
+
+.nav-item {
+    display: flex;
+}

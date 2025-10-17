@@ -1,0 +1,24 @@
+<?php
+
+Class ItemView {
+    public function DisplayItems($items) {
+
+        require_once __DIR__ . '/../../template/lista_items.phtml';
+
+    }
+
+    public function DisplayItem($item) {
+        echo "
+        <ul>
+            <li>Nombre: {$item->nombre}</li>
+            <li>Edad: {$item->edad_meses} meses</li>
+            <li>Raza: {$item->raza}</li>
+            <li>Color: {$item->color}</li>
+            <li>Peso: {$item->peso_kg} KG</li>
+            <li>Observaciones: {$item->observaciones}</li>
+        </ul>
+        <a class='Botones' href='home'>Volver
+        <a class='Botones' href='editItem'>Editar</a>
+        <a class='Botones' href='delete'>Borrar</a>";
+    }
+}

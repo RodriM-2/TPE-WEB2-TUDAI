@@ -1,0 +1,26 @@
+<?php
+
+//require_once __DIR__ . '/layout/header.phtml';
+
+echo "
+    <table class='Datos'>
+        <tr>
+            <th>Nombre</th>
+            <th>Raza</th>
+        </tr>";
+        foreach ($items as $item) {
+            echo "
+                <tr>
+                    <td>
+                        {$item->nombre}
+                    </td>
+                    <td>
+                        {$item->raza}
+                    </td>
+                    <td>
+                        <a class='Botones' href=GetItem/{$item->id_gato}>Ver completo</a>
+                </tr>";
+        }
+    echo "</table>";
+
+//require_once __DIR__ . '/layout/footer.phtml';

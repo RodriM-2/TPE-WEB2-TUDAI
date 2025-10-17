@@ -1,9 +1,8 @@
 <?php 
 
-    require_once 'modelDB.php';
+    require_once 'Model.php';
 
-    class CategoryModel extends modelDB {
-
+    class CategoryModel extends Model{
         protected $table='peluqueros';
 
         public function AddCategory($nombre_apellido,$telefono,$edad,$turno,$especialidad) {
