@@ -3,6 +3,21 @@
     border-collapse: separate;
 }
 
+.form-add {
+    width: 50%;
+    border: 2px solid rgb(189, 188, 188);
+    border-radius: 10px;
+}
+
+.box, .col-form {
+    width: 100%;
+    display: flex;
+}
+
+.box {
+    align-items: flex-start;
+}
+
 .Datos tr td, th{
     border-radius: 10px;
     border: 2px solid black;
@@ -21,4 +36,35 @@
 
 .nav-item {
     display: flex;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.age {
+    width:25%;
+}
+
+.btn-item-submit {
+    margin: 5px;
+}
+
+.col-form input {
+    border-radius: 10px;
+}
+
+td, th {
+    text-align: center;
+}
+
+.hometext {
+    text-align: center;
+}
+
+.boxhome {
+    border: 2px solid rgb(218, 218, 218);
+    border-radius: 15px;
 }

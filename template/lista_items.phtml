@@ -1,14 +1,11 @@
-<?php
-
-//require_once __DIR__ . '/layout/header.phtml';
-
-echo "
+<div class=box>
+    <?php require_once 'form_items.phtml'?>
     <table class='Datos'>
         <tr>
             <th>Nombre</th>
             <th>Raza</th>
-        </tr>";
-        foreach ($items as $item) {
+        </tr>
+        <?php foreach ($items as $item) {
             echo "
                 <tr>
                     <td>
@@ -19,8 +16,8 @@ echo "
                     </td>
                     <td>
                         <a class='Botones' href=GetItem/{$item->id_gato}>Ver completo</a>
+                    </td>
                 </tr>";
-        }
-    echo "</table>";
-
-//require_once __DIR__ . '/layout/footer.phtml';
+        }?>
+    </table>
+</div>

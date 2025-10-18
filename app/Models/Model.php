@@ -19,9 +19,4 @@ abstract class Model {
 
         return $items;
     }
-
-    public function RemoveElement($id) {
-        $sentence= $this->db->prepare("DELETE FROM {$this->table} WHERE id=?");
-        $sentence->execute([$id]);
-    }
 }

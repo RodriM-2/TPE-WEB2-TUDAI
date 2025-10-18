@@ -1,0 +1,37 @@
+<form action="addCategoria" method="POST" class="form-add">
+    <div class="col-form">
+        <div class="field">
+            <label>Nombre*</label>
+            <input required name="name" type="text">
+        </div>
+        <div class="field">
+            <label>Edad* (Meses)</label>
+            <input required name="age" type="number" class="age" min="1">
+        </div>
+    </div>
+    <div class="col-form">
+        <div class="field">
+            <label>Raza*</label>
+            <input required name="race" type="text">
+        </div>
+        <div class="field">
+            <label>Color</label>
+            <input name="color" type="text">
+        </div>
+    </div>
+    <div class="col-form">
+        <div class="field">
+            <label>Peso* (KG)</label>
+            <input required name="weight" type="text">
+        </div>
+    </div>
+    <div class="col-form">
+        <div class="field">
+            <label>Observaciones</label>
+            <textarea name="observations" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="col-form">
+        <button type="submit" class="btn-item-submit">Agregar</button>
+    </div>
+</form>

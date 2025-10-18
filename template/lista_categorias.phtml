@@ -1,0 +1,39 @@
+<div class="box">
+    <?php require_once 'form_categorias.phtml'?>
+    <table class="Datos">
+        <tr>
+            <th>Nombre y Apellido</th>
+            <th>Telefono</th>
+            <th>Edad</th>
+            <th>Turno</th>
+            <th>Especialidad</th>
+        </tr>
+        <?php foreach($categorias as $categoria) {
+            echo "
+                <tr>
+                    <td>
+                        {$categoria->nombre_apellido}
+                    </td>
+                    <td>
+                        {$categoria->telefono}
+                    </td>
+                    <td>
+                        {$categoria->edad}
+                    </td>
+                    <td>
+                        {$categoria->turno}
+                    </td>
+                    <td>
+                        {$categoria->especialidad}
+                    </td>
+                    <td>
+                        <a class='Botones' href='editCategoria/{$categoria->id_peluquero}'>Editar</a>
+                    </td>
+                    <td>
+                        <a class='Botones' href='deleteCategoria/{$categoria->id_peluquero}'>Borrar</a>
+                    </td>
+                </tr>
+            ";
+        }?>
+    </table>
+</div>

@@ -1,0 +1,31 @@
+<form action="addCategoria" method="POST" class="form-add">
+    <div class="col-form">
+        <div class="field">
+            <label>Nombre y Apellido*</label>
+            <input required name="name" type="text">
+        </div>
+        <div class="field">
+            <label>Telefono*</label>
+            <input required name="phoneNumber" type="number" class="phoneNumber">
+        </div>
+    </div>
+    <div class="col-form">
+        <div class="field">
+            <label>Turno</label>
+            <input name="schedule"  type="text">
+        </div>
+        <div class="field">
+            <label>Edad*</label>
+            <input required name="age" class="age" type="number" min="1">
+        </div>
+    </div>
+    <div class="col-form">
+        <div class="field">
+            <label>Especialidad</label>
+            <textarea name="specialty" rows="3"></textarea>
+        </div>
+    </div>
+    <div class="col-form">
+        <button type="submit" class="btn-item-submit">Agregar</button>
+    </div>
+</form>

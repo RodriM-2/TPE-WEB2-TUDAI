@@ -1,0 +1,51 @@
+<?php
+
+class CategoryView {
+    public function DisplayCategorias($categorias) {
+
+        require_once __DIR__ . '/../../template/lista_categorias.phtml';
+
+    }
+
+    public function showError($error) {
+        echo "<h1>$error</h1>";
+    }
+
+    public function DisplayCategoriaEdit($item) {
+        echo "
+    <form action='updateCategoria/{$item->id_peluquero}' method='POST' class='form-add'>
+        <div class='col-form'>
+            <div class='field'>
+                <label>Nombre y Apellido*</label>
+                <input required name='name' type='text' placeholder='{$item->nombre_apellido}'>
+            </div>
+            <div class='field'>
+                <label>Telefono*</label>
+                <input required name='phoneNumber' type='number' class='phoneNumber' placeholder='{$item->telefono}'>
+            </div>
+        </div>
+        <div class='col-form'>
+            <div class='field'>
+                <label>Turno</label>
+                <input name='schedule' type='text' placeholder='{$item->turno}'>
+            </div>
+            <div class='field'>
+                <label>Edad*</label>
+                <input required name='age' class='age' type='number' min='1' placeholder='{$item->edad}'>
+            </div>
+        </div>
+        <div class='col-form'>
+            <div class='field'>
+                <label>Especialidad</label>
+                <textarea name='specialty' rows='3'>{$item->especialidad}'</textarea>
+            </div>
+        </div>
+        <div class='col-form'>
+            <button type='submit' class='btn-item-submit'>Agregar</button>
+        </div>
+    </form>
+        ";
+    }
+
+    
+}
