@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-09-2025 a las 01:09:50
+-- Tiempo de generación: 20-10-2025 a las 02:45:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,7 +43,9 @@ CREATE TABLE `gatos` (
 --
 
 INSERT INTO `gatos` (`id_gato`, `nombre`, `edad_meses`, `raza`, `color`, `peso_kg`, `observaciones`, `id_peluquero`) VALUES
-(1, 'Canelo', 15, 'Gato naranja', 'Naranja', 4, 'Ligera cautela: fanatico de saltar hacia las cortinas, conocido por ser muy lloron', 1);
+(1, 'Canelo', 15, 'Gato naranja', 'Naranja', 4, 'Ligera cautela: fanatico de saltar hacia las cortinas, conocido por ser muy lloron', 1),
+(3, 'Luna', 15, 'Gato cafe', 'cafe', 5, 'Hermana calmada de Canelo', 1),
+(4, 'Tito', 26, 'Siames', 'Crema', 5, 'Callejero', 2);
 
 -- --------------------------------------------------------
 
@@ -65,7 +67,27 @@ CREATE TABLE `peluqueros` (
 --
 
 INSERT INTO `peluqueros` (`id_peluquero`, `nombre_apellido`, `telefono`, `edad`, `turno`, `especialidad`) VALUES
-(1, 'Rodrigo Membrilla', '2494329911', 23, 'Tarde/Noche', 'Especializado en paciencia y cuidado de gatos naranjas con dudosa cantidad de inteligencia');
+(1, 'Rodrigo Membrilla', '2494329912', 23, 'Tarde', 'Especializado en paciencia y cuidado de gatos naranjas con dudosa cantidad de inteligencia\''),
+(2, 'Agustin F.', '24941', 22, 'Mañana', 'Pasante.');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `username`, `password`) VALUES
+(1, 'UserEjemplo', '$2y$10$2zKVZiStZpsiBVrzzu1NOusQtE5oSWOc3SNIxFHRWBnoQd0TtJism');
 
 --
 -- Índices para tablas volcadas
@@ -85,6 +107,12 @@ ALTER TABLE `peluqueros`
   ADD PRIMARY KEY (`id_peluquero`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -92,13 +120,19 @@ ALTER TABLE `peluqueros`
 -- AUTO_INCREMENT de la tabla `gatos`
 --
 ALTER TABLE `gatos`
-  MODIFY `id_gato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_gato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `peluqueros`
 --
 ALTER TABLE `peluqueros`
-  MODIFY `id_peluquero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_peluquero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
