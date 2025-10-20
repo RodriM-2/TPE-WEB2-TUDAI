@@ -26,7 +26,14 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="getItems">Gatos</a>
                             <a class="nav-link" aria-current="page" href="getCategorias">Peluqueros</a>
-                            <a class="nav-link" aria-current="page" href="">Logear</a>
+                        </li>
+                         <li class="nav-item ml-auto">
+                            <?php if ($request->user): ?>
+                                    <span class="nav-link">Hola, <span class=GreetingUser><?php echo "{$request->user->username}"; ?></span></span>
+                                <a class="nav-link" aria-current="page" href="logout">Salir</a>
+                            <?php else:
+                                echo '<a class="nav-link" aria-current="page" href="login">Logear</a>';
+                                endif; ?>
                         </li>
                     </ul>
                 </div>

@@ -1,5 +1,10 @@
+<?php require_once __DIR__ . '/layout/header.phtml'?>
+
 <div class=box>
-    <?php require_once 'form_items.phtml'?>
+    <?php 
+    if ($request->user) {
+        require_once 'form_items.phtml';
+    }?>
     <table class='Datos'>
         <tr>
             <th>Nombre</th>
@@ -13,11 +18,17 @@
                     </td>
                     <td>
                         {$item->raza}
-                    </td>
+                    </td>";
+            if ($request->user) {
+                echo "
                     <td>
                         <a class='Botones' href=GetItem/{$item->id_gato}>Ver completo</a>
-                    </td>
+                    </td>";
+            }
+            echo "
                 </tr>";
         }?>
     </table>
 </div>
+
+<?php require_once __DIR__ . '/layout/footer.phtml'?>

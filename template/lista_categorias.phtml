@@ -1,5 +1,9 @@
+<?php require_once __DIR__ . '/layout/header.phtml'?>
+
 <div class="box">
-    <?php require_once 'form_categorias.phtml'?>
+    <?php if ($request->user) {
+        require_once 'form_categorias.phtml';
+    }?>
     <table class="Datos">
         <tr>
             <th>Nombre y Apellido</th>
@@ -25,15 +29,19 @@
                     </td>
                     <td>
                         {$categoria->especialidad}
-                    </td>
+                    </td>";
+                    if ($request->user) {
+                        echo "
                     <td>
                         <a class='Botones' href='editCategoria/{$categoria->id_peluquero}'>Editar</a>
                     </td>
                     <td>
                         <a class='Botones' href='deleteCategoria/{$categoria->id_peluquero}'>Borrar</a>
-                    </td>
-                </tr>
-            ";
+                    </td>";
+                echo "</tr>";
+                    }
         }?>
     </table>
 </div>
+
+<?php require_once __DIR__ . '/layout/footer.phtml'?>

@@ -1,13 +1,14 @@
 <?php
 
 Class ItemView {
-    public function DisplayItems($items) {
+    public function DisplayItems($items,$request) {
 
         require_once __DIR__ . '/../../template/lista_items.phtml';
 
     }
 
-    public function DisplayItem($item) {
+    public function DisplayItem($item,$request) {
+        require_once __DIR__ . '/../../template/layout/header.phtml';
         echo "
         <ul>
             <li>Nombre: {$item->nombre}</li>
@@ -26,33 +27,34 @@ Class ItemView {
         echo "<h1>$error</h1>";
     }
 
-    public function DisplayItemEdit($item) {
+    public function DisplayItemEdit($item,$request) {
+        require_once __DIR__ . '/../../template/layout/header.phtml';
         echo "
         <form action='UpdateItem/{$item->id_gato}' method='POST' class='form-addItem'>
     <div class='col-form'>
         <div class='field'>
             <label>Nombre*</label>
-            <input required name='name' type='text' placeholder='{$item->nombre}'>
+            <input required name='name' type='text' value='{$item->nombre}'>
         </div>
         <div class='field'>
             <label>Edad* (Meses)</label>
-            <input required name='age' type='number' class='age'placeholder='{$item->edad_meses}'>
+            <input required name='age' type='number' class='age' value='{$item->edad_meses}'>
         </div>
     </div>
     <div class='col-form'>
         <div class='field'>
             <label>Raza*</label>
-            <input required name='race' type='text' placeholder='{$item->raza}'>
+            <input required name='race' type='text' value='{$item->raza}'>
         </div>
         <div class='field'>
             <label>Color</label>
-            <input name='color' type='text' placeholder='{$item->color}'>
+            <input name='color' type='text' value='{$item->color}'>
         </div>
     </div>
     <div class='col-form'>
         <div class='field'>
             <label>Peso* (KG)</label>
-            <input required name='weight' type='text' placeholder='{$item->peso_kg}'>
+            <input required name='weight' type='text' value='{$item->peso_kg}'>
         </div>
     </div>
     <div class='col-form'>

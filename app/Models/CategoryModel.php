@@ -24,9 +24,9 @@
             $sentence->execute([$id]);
         }
 
-        public function GetCategoryByID($id) {
+        public function GetCategoryByID($request) {
             $sentence= $this->db->prepare("SELECT * FROM {$this->table} WHERE id_peluquero=?");
-            $sentence->execute([$id]);
+            $sentence->execute([$request->id]);
             $peluquero= $sentence->fetch(PDO::FETCH_OBJ);
 
             return $peluquero;

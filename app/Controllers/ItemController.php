@@ -13,14 +13,14 @@
             $this->view= new ItemView();
         }
 
-        public function GetItems() {
+        public function GetItems($request) {
             $items= $this->model->GetElements();
-            $this->view->DisplayItems($items);
+            $this->view->DisplayItems($items,$request);
         }
 
-        public function GetItem($id) {
-            $item= $this->model->GetItem($id);
-            $this->view->DisplayItem($item);
+        public function GetItem($request) {
+            $item= $this->model->GetItem($request);
+            $this->view->DisplayItem($item,$request);
         }
 
         public function AddItem() {
@@ -56,29 +56,29 @@
             header('Location: ' . BASE_URL);
         }
 
-        public function DeleteItem($id) {
-            $task = $this->model->GetItem($id);
+        public function DeleteItem($request) {
+            $task = $this->model->GetItem($request);
 
             if (!$task) {
-                return $this->view->showError("No existe el gato con el id=$id");
+                return $this->view->showError("No existe el gato con el id=$request->id");
             }
 
-            $this->model->RemoveItem($id);
+            $this->model->RemoveItem($request->id);
 
             header('Location: ' . BASE_URL);
         }
 
-        public function EditItem($id) {
-            $item= $this->model->GetItem($id);
+        public function EditItem($request) {
+            $item= $this->model->GetItem($request);
 
             if (!$item) {
-                return $this->view->showError("No existe el gato con el id=$id");
+                return $this->view->showError("No existe el gato con el id=$request->id");
             }
 
-            $this->view->DisplayItemEdit($item);
+            $this->view->DisplayItemEdit($item,$request);
         }
 
-        public function UpdateItem($id_gato) {
+        public function UpdateItem($request) {
             $name=$_POST['name'];
             $age=$_POST['age'];
             $race=$_POST['race'];
@@ -86,7 +86,7 @@
             $weight=$_POST['weight'];
             $observation=$_POST['observations'];
 
-            $id= $this->model->EditItem($name,$age,$race,$color,$weight,$observation,$id_gato);
+            $id= $this->model->EditItem($name,$age,$race,$color,$weight,$observation,$request->id);
         
             if (!$id) {
                 return $this->view->showError('Error al insertar datos del gato');

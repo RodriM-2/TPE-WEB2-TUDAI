@@ -5,9 +5,9 @@
 
        protected $table='gatos';
 
-        public function GetItem($id) {
+        public function GetItem($request) {
             $sentence= $this->db->prepare("SELECT * FROM {$this->table} WHERE id_gato=?");
-            $sentence->execute([$id]);
+            $sentence->execute([$request->id]);
             $gato= $sentence->fetch(PDO::FETCH_OBJ);
 
             return $gato;

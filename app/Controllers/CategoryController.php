@@ -12,9 +12,9 @@
             $this->view= new CategoryView();
         }
 
-        public function GetCategorias() {
+        public function GetCategorias($request) {
             $categorias= $this->model->GetElements();
-            $this->view->DisplayCategorias($categorias);
+            $this->view->DisplayCategorias($categorias,$request);
         }
 
         public function AddCategory() {
@@ -45,36 +45,36 @@
             header('Location: ' . BASE_URL);
         }
 
-        public function DeleteCategoria($id) {
-            $task = $this->model->GetCategoryByID($id);
+        public function DeleteCategoria($request) {
+            $task = $this->model->GetCategoryByID($request);
 
             if (!$task) {
-                return $this->view->showError("No existe la tarea con el id=$id");
+                return $this->view->showError("No existe peluquero con el id=$request->id");
             }
 
-            $this->model->RemoveCategory($id);
+            $this->model->RemoveCategory($request->id);
 
             header('Location: ' . BASE_URL);
         }
 
-        public function EditCategoria($id) {
-            $item= $this->model->GetCategoryByID($id);
+        public function EditCategoria($request) {
+            $item= $this->model->GetCategoryByID($request);
 
             if (!$item) {
-                return $this->view->showError("No existe el peluquero con el id=$id");
+                return $this->view->showError("No existe el peluquero con el id=$request->id");
             }
 
-            $this->view->DisplayCategoriaEdit($item);
+            $this->view->DisplayCategoriaEdit($item,$request);
         }
 
-        public function UpdateCategory($id_peluquero) {
+        public function UpdateCategory($request) {
             $name=$_POST['name'];
             $phoneNumber=$_POST['phoneNumber'];
             $schedule=$_POST['schedule'];
             $age=$_POST['age'];
             $specialty=$_POST['specialty'];
 
-            $id= $this->model->EditCategory($name,$phoneNumber,$age,$schedule,$specialty,$id_peluquero);
+            $id= $this->model->EditCategory($name,$phoneNumber,$age,$schedule,$specialty,$request->id);
         
             if (!$id) {
                 return $this->view->showError('Error al actualizar peluquero');
