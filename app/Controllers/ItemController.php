@@ -1,4 +1,5 @@
 <?php
+    //Controlador de gatos / Entidades N de la relacion
 
     require_once __DIR__ . '/../Models/ItemModel.php';
     require_once __DIR__ . '/../Views/ItemView.phtml';    
@@ -25,6 +26,7 @@
 
         public function GetItem($request) {
             $item= $this->model->GetItem($request);
+            //Si el gato tiene un peluquero asignado, se trae los datos desde el CategoryModel
             if ($item->id_peluquero) {
                 $FK= $this->FKmodel->GetCategoryByID($item);
             } else {

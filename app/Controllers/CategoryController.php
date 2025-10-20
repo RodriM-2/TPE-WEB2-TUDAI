@@ -1,8 +1,8 @@
 <?php
+    //Controlador de peluqueros / Entidades 1 de la relacion
 
     require_once __DIR__ . '/../Models/CategoryModel.php';
     require_once __DIR__ . '/../Views/CategoryView.phtml';
-    require_once __DIR__ . '/../Models/ItemModel.php';
 
     class CategoryController {
         private $model;

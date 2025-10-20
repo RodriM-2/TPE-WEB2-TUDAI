@@ -29,6 +29,7 @@
                             <a class="nav-link" aria-current="page" href="search">Buscar</a>
                         </li>
                          <li class="nav-item ml-auto">
+                            <!-- Pase muchos $request en los View para asi traerme el user cada vez que se pide un form -->
                             <?php if ($request->user): ?>
                                     <span class="nav-link">Hola, <span class=GreetingUser><?php echo "{$request->user->username}"; ?></span></span>
                                 <a class="nav-link" aria-current="page" href="logout">Salir</a>

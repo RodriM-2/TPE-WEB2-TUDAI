@@ -2,6 +2,8 @@
 
 require_once 'DBDeploy.php';
 
+//Tanto Items como Category heredan de la clase Model ya que comparten el elemento en comun de traer todos
+//A su vez, Model utiliza DBDeploy.php y por ende la clase ModelDB para construir el PDO y el deploy
 abstract class Model {
 
     protected $db;

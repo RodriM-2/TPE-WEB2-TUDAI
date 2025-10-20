@@ -1,4 +1,6 @@
 <?php
+//Por "Item" se hace referencia a la entidad N de la relacion (En este caso 'Gatos')
+//Por "Categoria" se refiere a la entidad 1 ('Peluqueros')
 
 require_once 'app/Controllers/ItemController.php';
 require_once 'app/Controllers/CategoryController.php';
@@ -23,9 +25,9 @@ $params = explode('/', $action);
 $request = new StdClass();
 $request = (new SessionMiddleware())->run($request);
 
-// determina que camino seguir según la acción
 switch ($params[0]) {
     case 'home':
+        //Esto en realidad no va, pero es mas para que no aparezca un fondo blanco al inicio
         require_once __DIR__ . '/template/layout/home.phtml';
         break;
     case 'getItems':
@@ -77,12 +79,14 @@ switch ($params[0]) {
         $CategoryController->DeleteCategoria($request);
         break;
     case 'editCategoria':
+        //Pushea el formulario para editar
         $request= (new RedirectMiddleware())->run($request);
         $CategoryController= new CategoryController();
         $request->id_peluquero= $params[1];
         $CategoryController->EditCategoria($request);
         break;
     case 'updateCategoria':
+        //Actualmente envia los cambios a la BDD
         $request= (new RedirectMiddleware())->run($request);
         $CategoryController= new CategoryController();
         $request->id= $params[1];
@@ -94,6 +98,7 @@ switch ($params[0]) {
         $CategoryController->ShowBusqueda($request);
         break;
     case 'doSearch':
+        //Busqueda en la BDD basado en un form
         $request= (new RedirectMiddleware())->run($request);
         $Itemcontroller= new ItemController();
         if (isset($_POST['peluquero_id'])) {
