@@ -48,5 +48,26 @@ class CategoryView {
         ";
     }
 
+    public function DisplayBusqueda($categories,$request) {
+        require_once __DIR__ . '/../../template/layout/header.phtml';
+        echo "
+            <form action='doSearch' method='POST' class='form-add'>
+                <div class='col-form'>
+                    <div class='field'>
+                        <label>Peluquero</label>
+                        <select name='peluquero_id'>";
+                            foreach($categories as $category) {
+                                echo "<option value='{$category->id_peluquero}'>{$category->nombre_apellido}</option>";
+                            }
+                        echo "</select>
+                    </div>
+                    <div class='col-form'>
+                        <button type='submit' class='btn-item-submit'>Buscar</button>
+                    </div>
+                </div>
+            </form>
+        ";
+    }
+
     
 }

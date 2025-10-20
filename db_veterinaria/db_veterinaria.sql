@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-10-2025 a las 02:45:56
+-- Tiempo de generación: 20-10-2025 a las 05:26:50
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -45,7 +45,9 @@ CREATE TABLE `gatos` (
 INSERT INTO `gatos` (`id_gato`, `nombre`, `edad_meses`, `raza`, `color`, `peso_kg`, `observaciones`, `id_peluquero`) VALUES
 (1, 'Canelo', 15, 'Gato naranja', 'Naranja', 4, 'Ligera cautela: fanatico de saltar hacia las cortinas, conocido por ser muy lloron', 1),
 (3, 'Luna', 15, 'Gato cafe', 'cafe', 5, 'Hermana calmada de Canelo', 1),
-(4, 'Tito', 26, 'Siames', 'Crema', 5, 'Callejero', 2);
+(4, 'Tito', 26, 'Siames', 'Crema', 5, 'Callejero', 2),
+(15, 'Amarga', 2, 'Desconocida', 'Gris', 9, 'Chonker', 1),
+(16, 'Abigail', 2, 'Egipcio', 'cafe', 7, 'Amenaza a todo lo que no sea un objeto muy solido', 2);
 
 -- --------------------------------------------------------
 
@@ -67,7 +69,7 @@ CREATE TABLE `peluqueros` (
 --
 
 INSERT INTO `peluqueros` (`id_peluquero`, `nombre_apellido`, `telefono`, `edad`, `turno`, `especialidad`) VALUES
-(1, 'Rodrigo Membrilla', '2494329912', 23, 'Tarde', 'Especializado en paciencia y cuidado de gatos naranjas con dudosa cantidad de inteligencia\''),
+(1, 'Rodrigo Membrilla', '2494329912', 23, 'Tarde', 'Especializado en paciencia y cuidado de gatos naranjas con dudosa cantidad de inteligencia'),
 (2, 'Agustin F.', '24941', 22, 'Mañana', 'Pasante.');
 
 -- --------------------------------------------------------
@@ -120,7 +122,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `gatos`
 --
 ALTER TABLE `gatos`
-  MODIFY `id_gato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_gato` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `peluqueros`

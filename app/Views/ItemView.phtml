@@ -1,13 +1,13 @@
 <?php
 
 Class ItemView {
-    public function DisplayItems($items,$request) {
+    public function DisplayItems($items,$FK,$request) {
 
         require_once __DIR__ . '/../../template/lista_items.phtml';
 
     }
 
-    public function DisplayItem($item,$request) {
+    public function DisplayItem($item,$FK,$request) {
         require_once __DIR__ . '/../../template/layout/header.phtml';
         echo "
         <ul>
@@ -16,8 +16,11 @@ Class ItemView {
             <li>Raza: {$item->raza}</li>
             <li>Color: {$item->color}</li>
             <li>Peso: {$item->peso_kg} KG</li>
-            <li>Observaciones: {$item->observaciones}</li>
-        </ul>
+            <li>Observaciones: {$item->observaciones}</li>";
+            if (!empty($FK)) {
+                echo "<li>Peluquero asignado: {$FK->nombre_apellido}</li>";
+            }
+        echo "</ul>
         <a class='Botones' href='home'>Volver</a>
         <a class='Botones' href='editItem/{$item->id_gato}'>Editar</a>
         <a class='Botones' href='deleteItem/{$item->id_gato}'>Borrar</a>";
@@ -27,7 +30,7 @@ Class ItemView {
         echo "<h1>$error</h1>";
     }
 
-    public function DisplayItemEdit($item,$request) {
+    public function DisplayItemEdit($item,$FK,$request) {
         require_once __DIR__ . '/../../template/layout/header.phtml';
         echo "
         <form action='UpdateItem/{$item->id_gato}' method='POST' class='form-addItem'>
@@ -61,6 +64,18 @@ Class ItemView {
         <div class='field'>
             <label>Observaciones</label>
             <textarea name='observations' rows='3'>{$item->observaciones}</textarea>
+        </div>
+    </div>
+    <div class='col-form'>
+        <div class='field'>
+            <select name='peluquero'>
+                <option value=''>N/A</option>";
+                    foreach($FK as $item) {
+                        echo "
+                            <option value='{$item->id_peluquero}'>{$item->nombre_apellido}</option>
+                        ";
+                    }
+            echo "</select>
         </div>
     </div>
     <div class='col-form'>

@@ -2,25 +2,35 @@
 
     require_once __DIR__ . '/../Models/ItemModel.php';
     require_once __DIR__ . '/../Views/ItemView.phtml';    
+    //Me traigo el Model de Categorias (Peluqueros) porque necesito ver las claves foraneas
+    require_once __DIR__ . '/../Models/CategoryModel.php';
 
     class ItemController {
 
         private $model;
+        private $FKmodel;
         private $view;
 
         public function __construct() {
             $this->model= new ItemModel();
             $this->view= new ItemView();
+            $this->FKmodel= new CategoryModel();
         }
 
         public function GetItems($request) {
             $items= $this->model->GetElements();
-            $this->view->DisplayItems($items,$request);
+            $FK= $this->FKmodel->GetElements();
+            $this->view->DisplayItems($items,$FK,$request);
         }
 
         public function GetItem($request) {
             $item= $this->model->GetItem($request);
-            $this->view->DisplayItem($item,$request);
+            if ($item->id_peluquero) {
+                $FK= $this->FKmodel->GetCategoryByID($item);
+            } else {
+                $FK='';
+            }
+            $this->view->DisplayItem($item,$FK,$request);
         }
 
         public function AddItem() {
@@ -46,8 +56,9 @@
             $color=$_POST['color'];
             $weight=$_POST['weight'];
             $observation=$_POST['observations'];
+            $peluquero= empty($_POST['peluquero']) ? NULL : $_POST['peluquero'];
 
-            $id= $this->model->AddItem($name,$age,$race,$color,$weight,$observation);
+            $id= $this->model->AddItem($name,$age,$race,$color,$weight,$observation,$peluquero);
         
             if (!$id) {
                 return $this->view->showError('Error al insertar datos del gato');
@@ -75,7 +86,9 @@
                 return $this->view->showError("No existe el gato con el id=$request->id");
             }
 
-            $this->view->DisplayItemEdit($item,$request);
+            $FK= $this->FKmodel->GetElements();
+
+            $this->view->DisplayItemEdit($item,$FK,$request);
         }
 
         public function UpdateItem($request) {
@@ -85,13 +98,19 @@
             $color=$_POST['color'];
             $weight=$_POST['weight'];
             $observation=$_POST['observations'];
+            $peluquero= empty($_POST['peluquero']) ? NULL : $_POST['peluquero'];
 
-            $id= $this->model->EditItem($name,$age,$race,$color,$weight,$observation,$request->id);
+            $id= $this->model->EditItem($name,$age,$race,$color,$weight,$observation,$peluquero,$request->id);
         
             if (!$id) {
                 return $this->view->showError('Error al insertar datos del gato');
             } 
 
             header('Location: ' . BASE_URL);
+        }
+
+        public function ShowItemsByCategory($request) {
+            $items= $this->model->GetItemsByCategory($request);
+            $this->view->DisplayItems($items,'',$request);
         }
     }

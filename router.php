@@ -79,7 +79,7 @@ switch ($params[0]) {
     case 'editCategoria':
         $request= (new RedirectMiddleware())->run($request);
         $CategoryController= new CategoryController();
-        $request->id= $params[1];
+        $request->id_peluquero= $params[1];
         $CategoryController->EditCategoria($request);
         break;
     case 'updateCategoria':
@@ -87,6 +87,21 @@ switch ($params[0]) {
         $CategoryController= new CategoryController();
         $request->id= $params[1];
         $CategoryController->UpdateCategory($request);
+        break;
+    case 'search':
+        $request= (new RedirectMiddleware())->run($request);
+        $CategoryController= new CategoryController();
+        $CategoryController->ShowBusqueda($request);
+        break;
+    case 'doSearch':
+        $request= (new RedirectMiddleware())->run($request);
+        $Itemcontroller= new ItemController();
+        if (isset($_POST['peluquero_id'])) {
+            $request->id = $_POST['peluquero_id']; 
+        } else {
+            $request->id = null;
+        }
+        $Itemcontroller->ShowItemsByCategory($request);
         break;
     case 'login':
         $AuthController= new AuthController();

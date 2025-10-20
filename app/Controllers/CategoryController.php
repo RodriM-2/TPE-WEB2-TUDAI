@@ -2,6 +2,7 @@
 
     require_once __DIR__ . '/../Models/CategoryModel.php';
     require_once __DIR__ . '/../Views/CategoryView.phtml';
+    require_once __DIR__ . '/../Models/ItemModel.php';
 
     class CategoryController {
         private $model;
@@ -81,5 +82,10 @@
             } 
 
             header('Location: ' . BASE_URL);
+        }
+
+        public function ShowBusqueda($request) {
+            $task= $this->model->GetElements();
+            $this->view->DisplayBusqueda($task,$request);
         }
     }

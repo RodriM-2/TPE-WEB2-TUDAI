@@ -32,6 +32,21 @@
         </div>
     </div>
     <div class="col-form">
+        <div class="field">
+            <label>Peluquero</label>
+            <select name="peluquero">
+                <option value="">N/A</option>
+                <?php
+                    foreach($FK as $item) {
+                        echo "
+                            <option value='{$item->id_peluquero}'>{$item->nombre_apellido}</option>
+                        ";
+                    }
+                ?>
+            </select>
+        </div>
+    </div>
+    <div class="col-form">
         <button type="submit" class="btn-item-submit">Agregar</button>
     </div>
 </form>
