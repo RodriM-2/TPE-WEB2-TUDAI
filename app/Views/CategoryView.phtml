@@ -2,71 +2,19 @@
 
 class CategoryView {
     public function DisplayCategorias($categorias,$request) {
-
-        require_once __DIR__ . '/../../template/lista_categorias.phtml';
-
+        require_once __DIR__ . '/../../template/Category/lista_categorias.phtml';
     }
 
     public function showError($error) {
-        echo "<h1>$error</h1>";
+        require_once __DIR__ . '/../../template/error.phtml';
     }
 
     public function DisplayCategoriaEdit($item,$request) {
-        require_once __DIR__ . '/../../template/layout/header.phtml';
-        echo "
-    <form action='updateCategoria/{$item->id_peluquero}' method='POST' class='form-add'>
-        <div class='col-form'>
-            <div class='field'>
-                <label>Nombre y Apellido*</label>
-                <input required name='name' type='text' value='{$item->nombre_apellido}'>
-            </div>
-            <div class='field'>
-                <label>Telefono*</label>
-                <input required name='phoneNumber' type='number' class='phoneNumber' value='{$item->telefono}'>
-            </div>
-        </div>
-        <div class='col-form'>
-            <div class='field'>
-                <label>Turno</label>
-                <input name='schedule' type='text' value='{$item->turno}'>
-            </div>
-            <div class='field'>
-                <label>Edad*</label>
-                <input required name='age' class='age' type='number' min='1' value='{$item->edad}'>
-            </div>
-        </div>
-        <div class='col-form'>
-            <div class='field'>
-                <label>Especialidad</label>
-                <textarea name='specialty' rows='3'>{$item->especialidad}</textarea>
-            </div>
-        </div>
-        <div class='col-form'>
-            <button type='submit' class='btn-item-submit'>Agregar</button>
-        </div>
-    </form>
-        ";
+        require_once __DIR__ . '/../../template/Category/form_edit_categoria.phtml';
     }
 
     public function DisplayBusqueda($categories,$request) {
-        require_once __DIR__ . '/../../template/layout/header.phtml';
-        echo "
-            <form action='doSearch' method='POST' class='form-add'>
-                <div class='col-form'>
-                    <div class='field'>
-                        <label>Peluquero</label>
-                        <select name='peluquero_id'>";
-                            foreach($categories as $category) {
-                                echo "<option value='{$category->id_peluquero}'>{$category->nombre_apellido}</option>";
-                            }
-                        echo "</select>
-                    </div>
-                    <div class='col-form'>
-                        <button type='submit' class='btn-item-submit'>Buscar</button>
-                    </div>
-                </div>
-            </form>
-        ";
+        require_once __DIR__ . '/../../template/Category/form_busqueda.phtml';
     }
 
     

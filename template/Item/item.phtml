@@ -1,0 +1,25 @@
+<?php 
+require_once __DIR__ . '/../layout/header.phtml';
+/** @var object $item */
+/** @var object $FK */
+
+echo "
+<ul>
+    <li>Nombre: {$item->nombre}</li>
+    <li>Edad: {$item->edad_meses} meses</li>
+    <li>Raza: {$item->raza}</li>
+    <li>Color: {$item->color}</li>
+    <li>Peso: {$item->peso_kg} KG</li>
+    <li>Observaciones: {$item->observaciones}</li>";
+if (!empty($FK)) {
+    echo "<li>Peluquero asignado: {$FK->nombre_apellido}</li>";
+}
+echo "</ul>";
+if ($request->user) {
+    echo "
+    <a class='Botones' href='home'>Volver</a>
+    <a class='Botones' href='editItem/{$item->id_gato}'>Editar</a>
+    <a class='Botones' href='deleteItem/{$item->id_gato}'>Borrar</a>";
+}
+
+require_once __DIR__ . '/../layout/footer.phtml';

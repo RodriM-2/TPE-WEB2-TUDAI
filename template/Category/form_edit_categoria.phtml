@@ -1,0 +1,38 @@
+<?php
+require_once __DIR__ . '/../layout/header.phtml';
+/** @var object $item */
+
+echo "
+    <form action='updateCategoria/{$item->id_peluquero}' method='POST' class='form-add'>
+        <div class='col-form'>
+            <div class='field'>
+                <label>Nombre y Apellido*</label>
+                <input required name='name' type='text' value='{$item->nombre_apellido}'>
+            </div>
+            <div class='field'>
+                <label>Telefono*</label>
+                <input required name='phoneNumber' type='number' class='phoneNumber' value='{$item->telefono}'>
+            </div>
+        </div>
+        <div class='col-form'>
+            <div class='field'>
+                <label>Turno</label>
+                <input name='schedule' type='text' value='{$item->turno}'>
+            </div>
+            <div class='field'>
+                <label>Edad*</label>
+                <input required name='age' class='age' type='number' min='1' value='{$item->edad}'>
+            </div>
+        </div>
+        <div class='col-form'>
+            <div class='field'>
+                <label>Especialidad</label>
+                <textarea name='specialty' rows='3'>{$item->especialidad}</textarea>
+            </div>
+        </div>
+        <div class='col-form'>
+            <button type='submit' class='btn-item-submit'>Agregar</button>
+        </div>
+    </form>";
+
+require_once __DIR__ . '/../layout/footer.phtml';

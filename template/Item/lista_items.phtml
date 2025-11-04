@@ -1,4 +1,4 @@
-<?php require_once __DIR__ . '/layout/header.phtml'?>
+<?php require_once __DIR__ . '/../layout/header.phtml'?>
 
 <div class=box>
     <?php 
@@ -18,17 +18,13 @@
                     </td>
                     <td>
                         {$item->raza}
-                    </td>";
-            if ($request->user) {
-                echo "
+                    </td>
                     <td>
                         <a class='Botones' href=GetItem/{$item->id_gato}>Ver completo</a>
-                    </td>";
-            }
-            echo "
+                    </td>
                 </tr>";
         }?>
     </table>
 </div>
 
-<?php require_once __DIR__ . '/layout/footer.phtml'?>
+<?php require_once __DIR__ . '/../layout/footer.phtml'?>

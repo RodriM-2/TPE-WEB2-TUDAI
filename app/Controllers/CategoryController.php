@@ -3,13 +3,17 @@
 
     require_once __DIR__ . '/../Models/CategoryModel.php';
     require_once __DIR__ . '/../Views/CategoryView.phtml';
+    //Me traigo el Model de Items (Gatos) porque necesito ver si estan asignados los peluqueros
+    require_once __DIR__ . '/../Models/ItemModel.php';
 
     class CategoryController {
         private $model;
+        private $FKmodel;
         private $view;
 
         public function __construct() {
             $this->model= new CategoryModel();
+            $this->FKmodel= new ItemModel();
             $this->view= new CategoryView();
         }
 
@@ -51,6 +55,12 @@
 
             if (!$task) {
                 return $this->view->showError("No existe peluquero con el id=$request->id");
+            }
+
+            $check= $this->FKmodel->GetItemsByCategory($request);
+            if ($check) {
+                $this->view->showError("Existen gatos asignados a este peluquero, no se puede eliminar");
+                die();
             }
 
             $this->model->RemoveCategory($request->id);

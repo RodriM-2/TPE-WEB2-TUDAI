@@ -27,7 +27,7 @@
         public function GetCategoryByID($request) {
             $sentence= $this->db->prepare("SELECT * FROM {$this->table} WHERE id_peluquero=?");
             //Chequeo si la consulta viene desde el controlador de Items (Pidiendo datos de la Foreign key)
-            if ($request->id_peluquero) {
+            if (isset($request->id_peluquero)) {
                 $sentence->execute([$request->id_peluquero]);
             } else {
                 $sentence->execute([$request->id]);

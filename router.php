@@ -35,7 +35,6 @@ switch ($params[0]) {
         $Itemcontroller->GetItems($request);
         break;
     case 'GetItem':
-        $request= (new RedirectMiddleware())->run($request);
         $Itemcontroller= new ItemController();
         $request->id= $params[1];
         $Itemcontroller->GetItem($request);
