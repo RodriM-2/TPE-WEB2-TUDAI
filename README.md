@@ -1,6 +1,10 @@
+[04-11]
+
+Corregidos los View, agregadas las template y modificado tambien el deploy en base a las correcciones mencionadas.
+
 [ATENCION !!]
 
-Para realizar la mayoria de acciones (Ver todos los gatos, editar, borrar y agregar) van a tener que logear:
+Para realizar la mayoria de acciones (editar, borrar y agregar) van a tener que logear:
 
 Usuario: UserEjemplo
 
