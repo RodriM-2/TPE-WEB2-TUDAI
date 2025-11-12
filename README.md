@@ -1,3 +1,7 @@
+[12-11]
+
+[LINK DE LA VERSION API REST (PARTE 3)](https://github.com/RodriM-2/TPE-WEB2-TUDAI-PT3)
+
 [04-11]
 
 Corregidos los View, agregadas las template y modificado tambien el deploy en base a las correcciones mencionadas.
